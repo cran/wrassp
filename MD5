@@ -1,4 +1,4 @@
-933f25ee05f35cf6351f8d1cf4e7a53b *DESCRIPTION
+61beee09096c7273029ba221a447e0f6 *DESCRIPTION
 afbd8cbaf68617e706a4187e27d23220 *NAMESPACE
 ab0f6d0f5cc5c5c96564cba757fce712 *NEWS
 09b95b7ac2af91b0f5b35a7186df90c3 *R/AsspChecks.R
@@ -20,12 +20,12 @@ ca7c2e21c12ee88302e7e535e7a698d1 *R/packageVars.R
 bb56f5607f41a460a3afeeb8cec88e97 *R/rmsana.R
 7a62586f42081988f27feba1da5bf89b *R/wrassp.logger.R
 49cad7f7754a875dde0b04ce857fc669 *R/zcrana.R
-cdaf3c14c4b70ecabb0e2507a64b220e *README.md
+f23b40cd4a2443ce41e7533d72a53bb5 *README.md
 96687450bca887deb5076f5f1bdbcfb4 *build/vignette.rds
 db0bec22dcf1d6e31d472d4b72e65ea4 *inst/CITATION
 83e6922b6cc77a6132a463c826625033 *inst/doc/wrassp_intro.R
 5dbbbc0452819f3dfd14614b5208c209 *inst/doc/wrassp_intro.Rmd
-c639833cce49df2fb30bd24fae33ffe3 *inst/doc/wrassp_intro.html
+a62a61691087012cba0a08a9e3e65ed2 *inst/doc/wrassp_intro.html
 6f2f87e6c58bfd892e4e744976569b23 *inst/extdata/lbo001.wav
 91b1a391af34e3e0e4d67cc244b4d75f *inst/extdata/lbo002.wav
 e35822751e79ce797df6d10ff52fc440 *inst/extdata/lbo003.wav
@@ -69,7 +69,7 @@ bed02fdcb9f7495b38b0616771d84172 *man/print.AsspDataObj.Rd
 f544a12383c7e8a0bcb14b59ee383d06 *man/wrasspOutputInfos.Rd
 08c42e7bddd419645bcc5c409acf4d6d *man/write.AsspDataObj.Rd
 5603ec2919908aae23f65ecb7982579e *man/zcrana.Rd
-c1cc5b13ad0b9d9f4431a606c2898648 *src/Makevars
+b2226f72d96ce8d6adbb9b1f6c7ef95d *src/Makevars
 e12694bd58490d4e421a3b23ed98d301 *src/assp/acf.c
 2c93ecf86bf2f9d3f8258117ada21c64 *src/assp/acf.h
 970d3e914fd537854487483d215cfbe8 *src/assp/assp.h
@@ -140,7 +140,7 @@ a03e7ac13cc1e9c5a920cb3b4544d5a5 *src/assp/winfuncs.c
 95b40f9d7e3bdc2da325363d425998a6 *src/assp/zcr.c
 5a61d4519d7299254e49b1aaaf44b22d *src/assp/zcr.h
 113384ed5e8d652e43b6fed8e6f7229c *src/dataobj.c
-51b3e435afd560a222b3c12c220f8454 *src/performAssp.c
+6cb2802f20ddcea7d912893d444b852c *src/performAssp.c
 3930d26d1220ae22ac7e7281ed98c680 *src/types.c
 96724cf6816ce5fd6658c06ca403ba92 *src/wrassp.c
 30173f862f7a02ab21e20d157c855403 *src/wrassp.h
@@ -149,7 +149,7 @@ a03e7ac13cc1e9c5a920cb3b4544d5a5 *src/assp/winfuncs.c
 130f21edd1396b2653a03436132af632 *tests/testthat/test_badCalls.R
 ed59069f2cc9db834fd4d0c4abb9f085 *tests/testthat/test_dataTypes.R
 330517ffe20f126a35cafcd41fb431ea *tests/testthat/test_fileIO.R
-3b79cf8923c9bc3f3c6d64fe7d5696c3 *tests/testthat/test_libasspVSwrassp.R
+be94aaf15f51d88092a1433e007f6baa *tests/testthat/test_libasspVSwrassp.R
 dfc9eb508a1c2d4549dabc4aee453afe *tests/testthat/test_logging.R
 7ddde696ed92d4b3e81df95c2e5e3289 *tests/testthat/test_signalProc.R
 bd72f1a845e8ca8936651963097a1c40 *vignettes/figure/unnamed-chunk-4-1.png

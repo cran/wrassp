@@ -1,5 +1,5 @@
 Package: wrassp
-Version: 0.1.2
+Version: 0.1.3
 Title: Interface to the ASSP Library
 Authors@R: as.person(c(
     "Raphael Winkelmann <raphael@phonetik.uni-muenchen.de> [aut, cre]",
@@ -20,12 +20,11 @@ Suggests: compare(>= 0.2.4), knitr(>= 1.7), testthat(>= 0.7.1.99)
 License: GPL (>= 3)
 URL: https://github.com/IPS-LMU/wrassp
 BugReports: https://github.com/IPS-LMU/wrassp/issues
-Packaged: 2014-11-17 10:59:15 UTC; ripley
+Packaged: 2014-12-01 17:13:26 UTC; raphaelwinkelmann
 Author: Raphael Winkelmann [aut, cre],
   Lasse Bombien [aut],
   Michel Scheffers [aut]
 Maintainer: Raphael Winkelmann <raphael@phonetik.uni-muenchen.de>
-SystemRequirements: GNU make
 NeedsCompilation: yes
 Repository: CRAN
-Date/Publication: 2014-11-17 11:59:34
+Date/Publication: 2014-12-02 00:17:08
