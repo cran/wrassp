@@ -1,11 +1,11 @@
 Package: wrassp
-Version: 0.1.3
+Version: 0.1.4
 Title: Interface to the ASSP Library
-Authors@R: as.person(c(
-    "Raphael Winkelmann <raphael@phonetik.uni-muenchen.de> [aut, cre]",
-    "Lasse Bombien <lasse@phonetik.uni-muenchen.de> [aut]",
-    "Michel Scheffers [aut]"))
-Description: wrassp is a wrapper around Michel Scheffers's libassp (Advanced
+Authors@R: c(
+    person("Raphael", "Winkelmann", ,"raphael@phonetik.uni-muenchen.de", role = c("aut", "cre")),
+    person("Lasse", "Bombien", , "lasse@phonetik.uni-muenchen.de", role = c("aut")),
+    person("Michel", "Scheffers", role = c("aut")))
+Description: A wrapper around Michel Scheffers's libassp (Advanced
     Speech Signal Processor). The libassp library aims at providing
     functionality for handling speech signal files in most common audio formats
     and for performing analyses common in phonetic science/speech science. This
@@ -16,15 +16,16 @@ Description: wrassp is a wrapper around Michel Scheffers's libassp (Advanced
     (hopefully) user-friendly manner.
 Depends: R (>= 3.1.1)
 VignetteBuilder: knitr
-Suggests: compare(>= 0.2.4), knitr(>= 1.7), testthat(>= 0.7.1.99)
+Suggests: compare(>= 0.2.4), rmarkdown, knitr, testthat(>= 0.7.1)
 License: GPL (>= 3)
 URL: https://github.com/IPS-LMU/wrassp
 BugReports: https://github.com/IPS-LMU/wrassp/issues
-Packaged: 2014-12-01 17:13:26 UTC; raphaelwinkelmann
+RoxygenNote: 5.0.1
+NeedsCompilation: yes
+Packaged: 2016-05-30 14:36:51 UTC; raphaelwinkelmann
 Author: Raphael Winkelmann [aut, cre],
   Lasse Bombien [aut],
   Michel Scheffers [aut]
 Maintainer: Raphael Winkelmann <raphael@phonetik.uni-muenchen.de>
-NeedsCompilation: yes
 Repository: CRAN
-Date/Publication: 2014-12-02 00:17:08
+Date/Publication: 2016-05-30 16:54:01

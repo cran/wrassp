@@ -39,6 +39,7 @@
 ##' the directory of the input files
 ##' @param forceToLog is set by the global package variable useWrasspLogger. This is set
 ##' to FALSE by default and should be set to TRUE is logging is desired.
+##' @param verbose display infos & show progress bar
 ##' @return nrOfProcessedFiles or if only one file to process return
 ##' AsspDataObj of that file
 ##' @author Raphael Winkelmann
@@ -68,7 +69,8 @@
                           fftLength = 0, windowShift = 5.0, 
                           window = 'BLACKMAN', bandwidth = 0.0, ## DFT specific
                           toFile = TRUE, explicitExt = NULL, 
-                          outputDirectory = NULL, forceToLog = useWrasspLogger) {
+                          outputDirectory = NULL, forceToLog = useWrasspLogger,
+                          verbose = TRUE) {
   ## ########################
   ## a few parameter checks and expand paths
   
@@ -107,14 +109,14 @@
   ## #######################
   ## perform analysis
   
-  if(length(listOfFiles)==1){
+  if(length(listOfFiles)==1 | !verbose){
     pb <- NULL
   }else{
     if(toFile==FALSE){
       stop("length(listOfFiles) is > 1 and toFile=FALSE! toFile=FALSE only permitted for single files.")
     }
     cat('\n  INFO: applying dftSpectrum to', length(listOfFiles), 'files\n')
-    pb <- txtProgressBar(min = 0, max = length(listOfFiles), style = 3)
+    pb <- utils::txtProgressBar(min = 0, max = length(listOfFiles), style = 3)
   } 
   
   externalRes = invisible(.External("performAssp", listOfFiles, 
@@ -141,7 +143,7 @@
   ## #########################
   ## return dataObj if length only one file
   
-  if(!(length(listOfFiles)==1)){
+  if(!is.null(pb)){
     close(pb)
   }else{
     return(externalRes)

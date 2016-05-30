@@ -1,6 +1,6 @@
 ##' ksvF0 function adapted from libassp
 ##'
-##' F0 analysis of the signal in <listOfFile> using the 
+##' F0 analysis of the signal in <listOfFiles> using the 
 ##' K. Schaefer-Vincent periodicity detection algortithm.
 ##' Analysis results will be written to a file with the
 ##' base name of the input file and extension '.f0'.
@@ -29,9 +29,11 @@
 ##' the directory of the input files
 ##' @param forceToLog is set by the global package variable useWrasspLogger. This is set
 ##' to FALSE by default and should be set to TRUE is logging is desired.
+##' @param verbose display infos & show progress bar
 ##' @return nrOfProcessedFiles or if only one file to process return AsspDataObj of that file
 ##' @author Raphael Winkelmann
 ##' @author Lasse Bombien
+##' @references Schaefer-Vincent K (1983) Pitch period detection and chaining: method and evaluation. Phonetica 1983, Vol 40, pp. 177-202
 ##' @aliases f0ana f0_ksv
 ##' @seealso \code{\link{mhsF0}} for an alternative pitch tracker
 ##' @useDynLib wrassp
@@ -59,7 +61,8 @@
                                            maxF = 600, minF = 50, 
                                            minAmp = 50, maxZCR = 3000.0, 
                                            toFile = TRUE, explicitExt = NULL,
-                                           outputDirectory = NULL, forceToLog = useWrasspLogger) {
+                                           outputDirectory = NULL, forceToLog = useWrasspLogger,
+                                           verbose = TRUE) {
   
   ###########################
   # a few parameter checks and expand paths
@@ -95,14 +98,14 @@
   ###########################
   # perform analysis
   
-  if(length(listOfFiles)==1){
+  if(length(listOfFiles) == 1 | !verbose){
     pb <- NULL
   }else{
     if(toFile==FALSE){
       stop("length(listOfFiles) is > 1 and toFile=FALSE! toFile=FALSE only permitted for single files.")
     }
     cat('\n  INFO: applying f0ana to', length(listOfFiles), 'files\n')
-    pb <- txtProgressBar(min = 0, max = length(listOfFiles), style = 3)
+    pb <- utils::txtProgressBar(min = 0, max = length(listOfFiles), style = 3)
   }	
   
   externalRes = invisible(.External("performAssp", listOfFiles, 
@@ -125,7 +128,7 @@
   #############################
   # return dataObj if length only one file
   
-  if(!(length(listOfFiles)==1)){
+  if(!is.null(pb)){
     close(pb)
   }else{
     return(externalRes)

@@ -102,3 +102,7 @@ names(wrasspOutputInfos)
 # show output infos of function forest
 wrasspOutputInfos$forest
 
+## ----eval=FALSE----------------------------------------------------------
+#  # open wrassp package documentation
+#  ?wrassp
+
