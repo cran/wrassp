@@ -17,17 +17,17 @@
 ##' @param endTime = <time>: set end of analysis interval to <time> seconds
 ##' (default: end of data)
 ##' @param resolution = <freq>: set FFT length to the smallest value which
-##' results in a freqequency resolution of <freq> Hz or better (default: 40.0)
+##' results in a frequency resolution of <freq> Hz or better (default: 40.0)
 ##' @param fftLength = <num>: set FFT length to <num> points (overrules default
 ##' and 'resolution' option)
 ##' @param windowShift = <dur>: set analysis window shift to <dur> ms
 ##' (default: 5.0)
 ##' @param window = <type>: set analysis window function to <type> (default:
 ##' BLACKMAN)
-##' @param numCeps = <num>: set number of cepstral coeffcients used to <num>
+##' @param numCeps = <num>: set number of cepstral coefficients used to <num>
 ##' (default: sampling rate in kHz + 1; minimum: 2)
 ##' @param toFile write results to file (default extension depends on )
-##' @param explicitExt set if you wish to overwride the default extension
+##' @param explicitExt set if you wish to override the default extension
 ##' @param outputDirectory directory in which output files are stored. Defaults to NULL, i.e.
 ##' the directory of the input files
 ##' @param forceToLog is set by the global package variable useWrasspLogger. This is set
@@ -39,7 +39,7 @@
 ##' @author Lasse Bombien
 ##' @seealso \code{\link{dftSpectrum}}, \code{\link{lpsSpectrum}}, \code{\link{cepstrum}}; 
 ##' all derived from libassp's spectrum function.
-##' @useDynLib wrassp
+##' @useDynLib wrassp, .registration = TRUE
 ##' @examples
 ##' # get path to audio file
 ##' path2wav <- list.files(system.file("extdata", package = "wrassp"), 

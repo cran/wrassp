@@ -27,7 +27,7 @@ windowShift options}
 (default: end of data)}
 
 \item{resolution}{= <freq>: set FFT length to the smallest value which
-results in a freqequency resolution of <freq> Hz or better (default: 40.0)}
+results in a frequency resolution of <freq> Hz or better (default: 40.0)}
 
 \item{fftLength}{= <num>: set FFT length to <num> points (overrules default
 and 'resolution' option)}
@@ -51,7 +51,7 @@ pre-emphasis used in LP analysis, i.e. TRUE)}
 
 \item{toFile}{write results to file (default extension depends on )}
 
-\item{explicitExt}{set if you wish to overwride the default extension}
+\item{explicitExt}{set if you wish to override the default extension}
 
 \item{outputDirectory}{directory in which output files are stored. Defaults to NULL, i.e.
 the directory of the input files}
@@ -93,13 +93,12 @@ plot(res$lps[dim(res$lps)[1]/2,],
      ylab='spectral value')
 
 }
+\seealso{
+\code{\link{dftSpectrum}}, \code{\link{cssSpectrum}}, \code{\link{cepstrum}}; 
+all derived from libassp's spectrum function.
+}
 \author{
 Raphael Winkelmann
 
 Lasse Bombien
 }
-\seealso{
-\code{\link{dftSpectrum}}, \code{\link{cssSpectrum}}, \code{\link{cepstrum}}; 
-all derived from libassp's spectrum function.
-}
-

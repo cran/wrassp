@@ -39,7 +39,7 @@ BLACKMAN)}
 
 \item{toFile}{write results to file (default extension depends on )}
 
-\item{explicitExt}{set if you wish to overwride the default extension}
+\item{explicitExt}{set if you wish to override the default extension}
 
 \item{outputDirectory}{directory in which output files are stored. Defaults to NULL, i.e.
 the directory of the input files}
@@ -54,7 +54,7 @@ nrOfProcessedFiles or if only one file to process return
 AsspDataObj of that file
 }
 \description{
-calculate cepstral coeffisients using libassp
+calculate cepstral coefficients using libassp
 }
 \details{
 Short-term cepstral analysis of the signal in <listOfFiles>
@@ -82,13 +82,12 @@ plot(res$cep[dim(res$cep)[1]/2,],
      ylab='cepstral value')
      
 }
+\seealso{
+\code{\link{dftSpectrum}}, \code{\link{cssSpectrum}}, \code{\link{lpsSpectrum}}; 
+all derived from libassp's spectrum function
+}
 \author{
 Raphael Winkelmann
 
 Lasse Bombien
 }
-\seealso{
-\code{\link{dftSpectrum}}, \code{\link{cssSpectrum}}, \code{\link{lpsSpectrum}}; 
-all derived from libassp's spectrum function
-}
-

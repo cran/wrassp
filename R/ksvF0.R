@@ -1,7 +1,7 @@
 ##' ksvF0 function adapted from libassp
 ##'
 ##' F0 analysis of the signal in <listOfFiles> using the 
-##' K. Schaefer-Vincent periodicity detection algortithm.
+##' K. Schaefer-Vincent periodicity detection algorithm.
 ##' Analysis results will be written to a file with the
 ##' base name of the input file and extension '.f0'.
 ##' Default output is in SSFF binary format (track 'F0').
@@ -24,7 +24,7 @@
 ##' @param minAmp = <amp>: set amplitude threshold for voiced samples to <amp> (default: 100)
 ##' @param maxZCR maximum zero crossing rate in Hz (for voicing detection)
 ##' @param toFile write results to file (default extension is .f0)
-##' @param explicitExt set if you wish to overwride the default extension
+##' @param explicitExt set if you wish to override the default extension
 ##' @param outputDirectory directory in which output files are stored. Defaults to NULL, i.e.
 ##' the directory of the input files
 ##' @param forceToLog is set by the global package variable useWrasspLogger. This is set
@@ -36,7 +36,7 @@
 ##' @references Schaefer-Vincent K (1983) Pitch period detection and chaining: method and evaluation. Phonetica 1983, Vol 40, pp. 177-202
 ##' @aliases f0ana f0_ksv
 ##' @seealso \code{\link{mhsF0}} for an alternative pitch tracker
-##' @useDynLib wrassp
+##' @useDynLib wrassp, .registration = TRUE
 ##' @examples
 ##' # get path to audio file
 ##' path2wav <- list.files(system.file("extdata", package = "wrassp"), 

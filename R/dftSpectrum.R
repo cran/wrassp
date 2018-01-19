@@ -34,7 +34,7 @@
 ##' Hz (default: 0, yielding the smallest possible value given the length of
 ##' the FFT)
 ##' @param toFile write results to file (default extension depends on )
-##' @param explicitExt set if you wish to overwride the default extension
+##' @param explicitExt set if you wish to override the default extension
 ##' @param outputDirectory directory in which output files are stored. Defaults to NULL, i.e.
 ##' the directory of the input files
 ##' @param forceToLog is set by the global package variable useWrasspLogger. This is set
@@ -46,7 +46,7 @@
 ##' @author Lasse Bombien
 ##' @seealso \code{\link{cssSpectrum}}, \code{\link{lpsSpectrum}}, \code{\link{cepstrum}}; 
 ##' all derived from libassp's spectrum function.
-##' @useDynLib wrassp
+##' @useDynLib wrassp, .registration = TRUE
 ##' @examples
 ##' # get path to audio file
 ##' path2wav <- list.files(system.file("extdata", package = "wrassp"), 

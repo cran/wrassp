@@ -17,9 +17,8 @@ List the tracks of an AsspDataObj
 }
 \details{
 AsspDataObj contain tracks (at least one). This function lists the names
-of these tracks. This function is equvalent to calling \code{names(x)}.
+of these tracks. This function is equivalent to calling \code{names(x)}.
 }
 \author{
 Lasse Bombien
 }
-

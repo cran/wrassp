@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/IPS-LMU/wrassp.svg?branch=master)](https://travis-ci.org/IPS-LMU/wrassp)
 [![Coverage Status](https://coveralls.io/repos/IPS-LMU/wrassp/badge.svg)](https://coveralls.io/r/IPS-LMU/wrassp)
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/wrassp)](http://cran.r-project.org/package=wrassp)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/wrassp)](https://CRAN.R-project.org/package=wrassp)
 
 `wrassp` is a wrapper for R around Michel Scheffers's [libassp](http://libassp.sourceforge.net/)
 (Advanced Speech Signal Processor). The libassp library aims at providing functionality for handling speech signal files in most common audio formats and for performing analyses common in phonetic science/speech science. This includes the calculation of formants, fundamental frequency, root mean square, auto correlation, a variety of spectral analyses, zero crossing rate, filtering etc. This wrapper provides R with a large subset of libassp's signal processing functions and provides them to the user in a (hopefully) user-friendly manner.
@@ -11,7 +11,7 @@ This package is part of the next iteration of the EMU Speech Database Management
 
 ## Installation
 
-* install the current [CRAN release](http://cran.r-project.org/package=wrassp):
+* install the current [CRAN release](https://CRAN.R-project.org/package=wrassp):
 ```r
 install.packages("wrassp")
 ```
@@ -72,6 +72,30 @@ vignette('wrassp_intro')
 
 + `read.AsspDataObj()`: read an existing SSFF file into a `AsspDataObj` which is its in-memory equivalent.
 + `write.AsspDataObj()`: write a `AsspDataObj` out to a SSFF file.
+
+## For Developers
+
+### Checking on rocker/r-devel docker image (prerequisite docker is installed)
+
+- pull current r-devel image: `docker pull rocker/r-devel`
+- check if pull worked: `docker images`
+- check R version in image: `docker run rocker/r-devel:latest R --version`
+- run interactive version of bash and mount wrassp project folder (==current directory): `docker run --rm -ti -v $(pwd):/wrassp rocker/r-devel:latest bash`
+- build: `RD CMD build --resave-data --no-manual --no-build-vignettes wrassp`
+- manually install deps (this might need a bit of tweaking): `RD -e 'install.packages(c("stringi","evaluate","compare", "rmarkdown", "knitr", "testthat"))'`
+- check: `RD CMD check --as-cran wrassp_*.tar.gz`
+
+
+### Using rchk for additional checks
+
+- clone repo `git clone https://github.com/joshuaulrich/rchk-docker.git`
+- `cd rchk-docker`
+- build docker image `docker build .`
+- code below is adapted from final example of this `README.md`: https://github.com/kalibera/rchk
+- build r package `./bin/R CMD build --resave-data --no-manual --no-build-vignettes /wrassp`
+- install package `echo 'install.packages("wrassp_0.1.5.tar.gz",repos=NULL)' |  ./bin/R --slave`
+- run rchk `/opt/rchk/scripts/check_package.sh wrassp`
+- view rchk results `less packages/lib/wrassp/libs/wrassp.so.bcheck` and `less packages/lib/wrassp/libs/wrassp.so.maacheck`
 
 ## Authors
 
