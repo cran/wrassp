@@ -12,7 +12,7 @@
 
 <meta name="author" content="Lasse Bombien &amp; Raphael Winkelmann" />
 
-<meta name="date" content="2018-05-07" />
+<meta name="date" content="2018-08-31" />
 
 <title>An introduction to the wrassp package</title>
 
@@ -280,10 +280,14 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 
 <h1 class="title toc-ignore">An introduction to the wrassp package</h1>
 <h4 class="author"><em>Lasse Bombien &amp; Raphael Winkelmann</em></h4>
-<h4 class="date"><em>2018-05-07</em></h4>
+<h4 class="date"><em>2018-08-31</em></h4>
 
 
 
+<div id="deprecation-warning" class="section level1">
+<h1>DEPRECATION WARNING</h1>
+<p>This vignette is considered depricated! It’s content has been moved to the <a href="https://ips-lmu.github.io/The-EMU-SDMS-Manual/">the EMU-SDMS manual</a> (+ expanded and updated). Specifially see the <a href="https://ips-lmu.github.io/The-EMU-SDMS-Manual/chap-wrassp.html">the R package wrassp</a> as well as the <a href="https://ips-lmu.github.io/The-EMU-SDMS-Manual/chap-wrassp-impl.html">wrassp implementation</a> chapters.</p>
+</div>
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
 <p>This document is meant as an introduction to the <code>wrassp</code> package. <code>wrassp</code> is a <strong>w</strong>rapper for <strong>R</strong> around Michel Scheffers’s <a href="http://libassp.sourceforge.net/">libassp</a> (<strong>A</strong>dvanced <strong>S</strong>peech <strong>S</strong>ignal <strong>P</strong>rocessor). The libassp library aims at providing functionality for handling speech signal files in most common audio formats and for performing analyses common in phonetic science/speech science. This includes the calculation of formants, fundamental frequency, root mean square, auto correlation, a variety of spectral analyses, zero crossing rate, filtering etc. This wrapper provides R with a large subset of libassp’s signal processing functions and provides them to the user in a (hopefully) user-friendly manner.</p>
@@ -305,7 +309,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <pre><code>## [1] &quot;AsspDataObj&quot;</code></pre>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co"># print object description</span></a>
 <a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw">print</span>(au)</a></code></pre></div>
-<pre><code>## Assp Data Object of file /private/var/folders/yk/8z9tn7kx6hbcg_9n4c1sld980000gn/T/Rtmp3mp4rr/Rinst3666501b743e/wrassp/extdata/lbo001.wav.
+<pre><code>## Assp Data Object of file /private/var/folders/yk/8z9tn7kx6hbcg_9n4c1sld980000gn/T/Rtmp1hSVn2/Rinst168773648e1a0/wrassp/extdata/lbo001.wav.
 ## Format: WAVE (binary)
 ## 19983 records at 16000 Hz
 ## Duration: 1.248938 s
@@ -334,7 +338,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 ## [1] 16000
 ## 
 ## $filePath
-## [1] &quot;/private/var/folders/yk/8z9tn7kx6hbcg_9n4c1sld980000gn/T/Rtmp3mp4rr/Rinst3666501b743e/wrassp/extdata/lbo001.wav&quot;
+## [1] &quot;/private/var/folders/yk/8z9tn7kx6hbcg_9n4c1sld980000gn/T/Rtmp1hSVn2/Rinst168773648e1a0/wrassp/extdata/lbo001.wav&quot;
 ## 
 ## $origFreq
 ## [1] 0
