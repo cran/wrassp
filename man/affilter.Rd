@@ -4,18 +4,28 @@
 \alias{affilter}
 \title{affilter}
 \usage{
-affilter(listOfFiles = NULL, optLogFilePath = NULL, highPass = 4000,
-  lowPass = 0, stopBand = 96, transition = 250, useIIR = FALSE,
-  numIIRsections = 4, toFile = TRUE, explicitExt = NULL,
-  outputDirectory = NULL, forceToLog = useWrasspLogger,
-  verbose = TRUE)
+affilter(
+  listOfFiles = NULL,
+  optLogFilePath = NULL,
+  highPass = 4000,
+  lowPass = 0,
+  stopBand = 96,
+  transition = 250,
+  useIIR = FALSE,
+  numIIRsections = 4,
+  toFile = TRUE,
+  explicitExt = NULL,
+  outputDirectory = NULL,
+  forceToLog = useWrasspLogger,
+  verbose = TRUE
+)
 }
 \arguments{
 \item{listOfFiles}{vector of file paths to be processed by function}
 
 \item{optLogFilePath}{path to option log file}
 
-\item{highPass}{= <num>: set the high-pass cut-off frequency to <num> Hz (default: 0, no high-pass filtering)}
+\item{highPass}{= <num>: set the high-pass cut-off frequency to <num> Hz (default: 4000, high-pass filtering is applied)}
 
 \item{lowPass}{= <num>: set the low-pass cut-off frequency to <num> Hz (default: 0, no low-pass filtering)}
 
@@ -54,11 +64,13 @@ selected as shown in the table below.
 
 \tabular{ccll}{
 \strong{hp} \tab \strong{lp} \tab \strong{filter characteristic} \tab \strong{extension}\cr
-> 0 \tab [0] \tab high-pass from hp \tab '.hpf'\cr
- [0] \tab > 0 \tab low-pass up to lp \tab '.lpf'\cr
+> 0 \tab 0 \tab high-pass from hp \tab '.hpf'\cr
+ 0 \tab > 0 \tab low-pass up to lp \tab '.lpf'\cr
 > 0 \tab > hp \tab band-pass from hp to lp \tab '.bpf'\cr
 > lp \tab > 0 \tab band-stop between lp and hp \tab '.bsf'\cr
 }
+
+Please note: per default a high-pass filter from 0 to 4000 Hz is applied.
 
 The Kaiser-window design method is used to compute the
 coefficients of a linear-phase FIR filter with unity gain

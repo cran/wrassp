@@ -3,16 +3,16 @@
 ##'
 ##' @title read.AsspDataObj from a signal/parameter file
 ##' @param fname filename of the signal or parameter file
-##' @param begin begin time (default is in ms) of segment to retrieve
-##' @param end end time (default is in ms) of segment to retrieve
-##' @param samples (BOOL) if set to false ms values of begin/end are sample numbers
+##' @param begin begin time (default is in seconds) of segment to retrieve
+##' @param end end time (default is in seconds) of segment to retrieve
+##' @param samples (BOOL) if set to false seconds values of begin/end are sample numbers
 ##' @return list object containing file data
 ##' @author Lasse Bombien
 ##' @aliases getAsspDataObj
 ##' @useDynLib wrassp, .registration = TRUE
 ##' @export
 'read.AsspDataObj' <- 'getAsspDataObj' <- function(fname, begin=0, end=0, samples=FALSE) {
-  fname <- path.expand(fname)
+  fname <- prepareFiles(fname)
   .External("getDObj2", fname, begin=begin, end=end, samples=samples, PACKAGE="wrassp")
 }
 
@@ -28,7 +28,7 @@
 ##' @useDynLib wrassp, .registration = TRUE
 ##' @aliases summary.AsspDataObj
 ##' @export
-"print.AsspDataObj" <- summary.AsspDataObj<- function(x, ...)
+"print.AsspDataObj" <- summary.AsspDataObj <- function(x, ...)
 {
     temp <- attr(x, "filePath")
     if (is.null(temp)) {
@@ -309,7 +309,7 @@ AsspDataFormat <- function(x) {
   x
 }
 
-##' Timing information on AsspDataObj
+##' Various information on AsspDataObj
 ##'
 ##' Some utility function to retrieve duration, number of records, sample rate and so on.
 ##' @title Timing information on AsspDataObj
@@ -336,4 +336,23 @@ numRecs.AsspDataObj <- function(x) {
 ##' @export
 rate.AsspDataObj <- function(x) {
   attr(x, 'sampleRate')
+}
+
+##' @rdname dur.AsspDataObj
+##' @return startTime: start time of the first sample of the AsspDataObj
+##' @export
+startTime.AsspDataObj <- function(x) {
+  attr(x, 'startTime')
+}
+
+##' @importFrom tibble as_tibble
+##' @export
+"as_tibble.AsspDataObj" <- function(x, ...){
+  frame_time = seq(from = startTime.AsspDataObj(x), 
+                   by = 1/rate.AsspDataObj(x), 
+                   length.out = numRecs.AsspDataObj(x)) * 1000
+  
+  all_tracks = do.call(cbind, x)
+  colnames(all_tracks) = paste0(rep(names(x), each = ncol(x[[1]])), rep(seq(1, to = ncol(x[[1]])), length(x))) 
+  return(as_tibble(cbind(frame_time, all_tracks)))
 }

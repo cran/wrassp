@@ -1,4 +1,4 @@
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 # load the package
 library(wrassp)
 # get the path to the data that comes with the package
@@ -6,7 +6,7 @@ wavPath = system.file('extdata', package='wrassp')
 # now list the .wav files so we have some audio files to play with
 wavFiles = list.files(wavPath, pattern=glob2rx('*.wav'), full.names=TRUE)
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 # load an audio file, e.g. the first one in the list above
 au = read.AsspDataObj(wavFiles[1])
 # show class
@@ -14,7 +14,7 @@ class(au)
 # print object description
 print(au)
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 # extract duration
 dur.AsspDataObj(au)
 # extract sampling rate
@@ -24,7 +24,7 @@ numRecs.AsspDataObj(au)
 # extract additional attributes
 attributes(au)
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 # extract track names
 tracks.AsspDataObj(au)
 # or an alternative way to extract track names
@@ -40,14 +40,14 @@ plot(seq(0,numRecs.AsspDataObj(au) - 1, 10) / rate.AsspDataObj(au),
      xlab='time (s)', 
      ylab='Audio samples')
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 # manipulate the audio
 au$audio = au$audio * 0.5
 # write file to tempdir
 dir = tempdir()
 writeres = write.AsspDataObj(au, file.path(dir, 'newau.wav'))
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 # calculate formants and corresponding bandwidth values
 fmBwVals = forest(wavFiles[1], toFile=F)
 # due to toFile=F this returns an object of the type AsspDataObj and 
@@ -66,7 +66,7 @@ matplot(seq(0,numRecs.AsspDataObj(fmBwVals) - 1) / rate.AsspDataObj(fmBwVals) +
         xlab='time (s)', 
         ylab='Formant frequency (Hz)')
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 # calculate the fundamental frequency contour
 f0vals = ksvF0(wavFiles[1], toFile=F)
 # plot the fundamental frequency contour
@@ -77,7 +77,7 @@ plot(seq(0,numRecs.AsspDataObj(f0vals) - 1) / rate.AsspDataObj(f0vals) +
      xlab='time (s)', 
      ylab='F0 frequency (Hz)')
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 # calculate the RMS-energy contour for all wavFiles
 rmsana(wavFiles, outputDirectory = tempdir())
 # list new files using wrasspOutputInfos$rmsana$ext (see below)
@@ -94,15 +94,15 @@ plot(seq(0,numRecs.AsspDataObj(rmsvals) - 1) / rate.AsspDataObj(rmsvals) +
      xlab='time (s)', 
      ylab='RMS energy (dB)')
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 # show all function names
 names(wrasspOutputInfos)
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 # show output infos of function forest
 wrasspOutputInfos$forest
 
-## ----eval=FALSE----------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  # open wrassp package documentation
 #  ?wrassp
 
