@@ -1,6 +1,6 @@
-d624a8739d09100360e74dd7b8a292ff *DESCRIPTION
+5fc97c913139f62d42e043c63d3d1e2d *DESCRIPTION
 d9c201bc9cc3511f8f337132236fd897 *NAMESPACE
-ce81dad2651e1b9c120bec23e08c6e0d *NEWS.md
+0a8c1d0da4e70b3870caefb9731b35eb *NEWS.md
 e9904536c092b6b3a8b246a4be1e3538 *R/AsspDataObj.R
 cc0669d7d297686d291e74ff02ef9eb4 *R/AsspTypes.R
 0cd4481b2a56ca579ed27b679399fb85 *R/acfana.R
@@ -21,12 +21,12 @@ e0a94986d4f481804b3b6b14d5c5bb0d *R/rmsana.R
 a6acfca7204b04807bb47aa3164c4e0f *R/wrassp-packageDocs.R
 e6de4fb2099ae124009c855926b81885 *R/wrassp.logger.R
 86a32575fd8675e91eaeb8018dbc7576 *R/zcrana.R
-05052383bf92f7eeef60e71814bccdfe *README.md
-fcf4211e7a7cfd8bb44f811b231c0361 *build/vignette.rds
+12258e5bd86589d7614ccbfe2e998213 *README.md
+f4255da11291fe44c8a051adc98b8d12 *build/vignette.rds
 db0bec22dcf1d6e31d472d4b72e65ea4 *inst/CITATION
 ea6ab95600fa4ab4684edf7857c89e5a *inst/doc/wrassp_intro.R
 21ce73c307d4327036dd915161387e27 *inst/doc/wrassp_intro.Rmd
-47ea31c79404aa79cdbd8dd8f8519fc4 *inst/doc/wrassp_intro.html
+86ac3940fd6928aef9fd82fcf0c3b33e *inst/doc/wrassp_intro.html
 6f2f87e6c58bfd892e4e744976569b23 *inst/extdata/lbo001.wav
 91b1a391af34e3e0e4d67cc244b4d75f *inst/extdata/lbo002.wav
 e35822751e79ce797df6d10ff52fc440 *inst/extdata/lbo003.wav
@@ -79,7 +79,7 @@ e12694bd58490d4e421a3b23ed98d301 *src/assp/acf.c
 1b4c1638d832953da3cb0ad8cc4a6198 *src/assp/asspana.h
 f419cf126fee9189e336ff232939e37c *src/assp/asspdsp.h
 a09e169132caddfb2f8817425a23171d *src/assp/asspendian.h
-7f37d60837af641bbc9f7d413c050970 *src/assp/asspfio.c
+82f281953b4a322bde461f1c25d1c22c *src/assp/asspfio.c
 ef6822c6d446da8006f9ef52b11c3979 *src/assp/asspfio.h
 001a541f91680c99f4fd3118d0c20a57 *src/assp/asspmess.c
 9334f13cdcb2adfbf1728cce9843e9a3 *src/assp/asspmess.h
@@ -141,7 +141,7 @@ c8911edd16e97d0532c262557b7ef646 *src/assp/trace.c
 a03e7ac13cc1e9c5a920cb3b4544d5a5 *src/assp/winfuncs.c
 95b40f9d7e3bdc2da325363d425998a6 *src/assp/zcr.c
 5a61d4519d7299254e49b1aaaf44b22d *src/assp/zcr.h
-8f462faa10366230686338404843a098 *src/dataobj.c
+85ba64c5d490c0c3848d9ce77314cf78 *src/dataobj.c
 de63ffb474e44cf0d0365c7b9c7eb01b *src/performAssp.c
 c55d9aaeced796f9cf0d17992b0e1173 *src/types.c
 01ab6f8a6048d973010954d60f44b3fe *src/wrassp.h
@@ -150,7 +150,7 @@ c55d9aaeced796f9cf0d17992b0e1173 *src/types.c
 44f9a75a5358b64b31a69263691a78e8 *tests/testthat/test_alternOutputDir.R
 9d2a076800f640b76a429232524eb9ca *tests/testthat/test_badCalls.R
 4715a8d8a6be8bf8d57f042a6c2aef60 *tests/testthat/test_dataTypes.R
-85ef99c841b773be6499fc800fa4b609 *tests/testthat/test_fileIO.R
+0947a66ad85fec2ea9917c608e0e75ec *tests/testthat/test_fileIO.R
 37ac40fb5ea6ec8febd0a79663e69c0e *tests/testthat/test_libasspVSwrassp.R
 5857b562eb64941a8979adcc90fddca5 *tests/testthat/test_logging.R
 59195a92e298151b0a68b8b082ef9210 *tests/testthat/test_signalProc.R

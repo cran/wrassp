@@ -45,13 +45,43 @@
 #include <dataobj.h>    /* data object definitions and handler */
 #include <headers.h>    /* header definitions and handler */
 
+#include <R_ext/PrtUtil.h>
+
+
 /* OS check for printing %llu and %lli*/
 //#ifdef __unix__
 #if defined (__unix__) || (defined (__APPLE__) && defined (__MACH__))
 
 #elif defined(_WIN32) || defined(WIN32) || defined(_WIN64) || defined(WIN64) 
   #define OS_Windows
+  #include <windows.h>
 #endif
+
+/*
+ * fopen variant that can handle UTF8 symbols in file paths/file names
+ * on windows & unix based systems
+ */
+FILE *os_dependent_fopen(char * filePath, char * Cmode){
+  #ifdef OS_Windows
+    // convert file name to _wchar 
+    int numberOfWchars_fileName  = MultiByteToWideChar(CP_UTF8, 0, filePath, -1, NULL, 0);
+    wchar_t wFilePath[MAX_PATH]; // MAX_PATH const available under Windows
+    wFilePath[numberOfWchars_fileName] = L'\0';
+    int newSize = MultiByteToWideChar(CP_UTF8, 0, filePath, -1, wFilePath, numberOfWchars_fileName); // return value ignored
+    // convert Cmode to _wchar
+    int numberOfWchars_cMode  = MultiByteToWideChar(CP_UTF8, 0, Cmode, -1, NULL, 0);
+    wchar_t wCmode[MAX_PATH]; // MAX_PATH const available under Windows
+    wCmode[numberOfWchars_cMode] = L'\0';
+    newSize = MultiByteToWideChar(CP_UTF8, 0, Cmode, -1, wCmode, numberOfWchars_cMode); // return value ignored
+    
+    FILE * fp = _wfopen(wFilePath, wCmode);
+  #else
+    FILE * fp = fopen(filePath, Cmode);
+  #endif
+
+  return(fp);
+    
+}
 
 /*DOC
 
@@ -104,7 +134,6 @@ DOBJ *asspFOpen(char *filePath, int mode, DOBJ *doPtr)
   int   err=0;
   int   CLEAR=FALSE;
   DOBJ *dop=NULL;
-
   if(filePath == NULL || !(mode & AFO_READ || mode & AFO_WRITE)) {
     setAsspMsg(AEB_BAD_ARGS, "asspFOpen");
     return(NULL);
@@ -119,100 +148,116 @@ DOBJ *asspFOpen(char *filePath, int mode, DOBJ *doPtr)
       return(NULL);
     }
     if(mode & AFO_WRITE && !(mode & AFO_READ)) {
-      if(doPtr->fileFormat <= FF_UNDEF ||
-	 doPtr->fileFormat >= NUM_FILE_FORMATS) {
-	setAsspMsg(AEB_BAD_ARGS, "asspFOpen");
-	return(NULL);
+      if(doPtr->fileFormat <= FF_UNDEF || 
+         doPtr->fileFormat >= NUM_FILE_FORMATS) {
+	        setAsspMsg(AEB_BAD_ARGS, "asspFOpen");
+	        return(NULL);
       }
-    }
-    else {
+    } else {
       if(doPtr->fileFormat <= FF_UNDEF)
-	CLEAR = TRUE;                      /* we may clear upon error */
+	      CLEAR = TRUE;                      /* we may clear upon error */
     }
     dop = doPtr;
-  }
-  else
+  } else {
     dop = allocDObj();
+  }
   if(dop != NULL) {
     clrAsspMsg();
     dop->filePath = filePath;
     dop->openMode = AFO_NONE;
     if(mode & AFO_READ) {                    /* open an existing file */
-      if(strcmp(filePath, "stdout") == 0 ||
-	 strcmp(filePath, "stderr") == 0) {
-	if(dop != doPtr)
-	  freeDObj(dop);
-	else if(CLEAR)
-	  clearDObj(dop);
-	setAsspMsg(AEF_ERR_OPEN, filePath);
-	return(NULL);
+      if(strcmp(filePath, "stdout") == 0 || strcmp(filePath, "stderr") == 0) {
+      	if(dop != doPtr) {
+      	  freeDObj(dop);
+      	} else if(CLEAR){
+      	  clearDObj(dop);
+      	}
+      	setAsspMsg(AEF_ERR_OPEN, filePath);
+	      return(NULL);
       }
       strcpy(Cmode, "r");
-      if(mode & AFO_WRITE)                     /* open in update mode */
-	strcat(Cmode, "+");
-      if(!(mode & AFO_TEXT))
-	strcat(Cmode, "b");
-      if(strcmp(filePath, "stdin") == 0)
-	dop->fp = stdin;
-      else
-	dop->fp = fopen(filePath, Cmode);
+      if(mode & AFO_WRITE){                    /* open in update mode */
+	      strcat(Cmode, "+");
+      }
+      if(!(mode & AFO_TEXT)){
+	      strcat(Cmode, "b");
+      }
+      if(strcmp(filePath, "stdin") == 0){
+	      dop->fp = stdin;
+      }
+      else {
+        dop->fp = os_dependent_fopen(filePath, Cmode);
+      }
       if(!(dop->fp)) {
-	if(dop != doPtr)
-	  freeDObj(dop);
-	else if(CLEAR)
-	  clearDObj(dop);
-	setAsspMsg(AEF_ERR_OPEN, filePath);
-	return(NULL);
+      	if(dop != doPtr){
+      	  freeDObj(dop);
+      	} else if(CLEAR){
+      	  clearDObj(dop);
+      	  setAsspMsg(AEF_ERR_OPEN, filePath);
+      	  return(NULL);
+      	}
       }
       err = getHeader(dop);
       if(err < 0) {
-	fclose(dop->fp);
-	if(dop != doPtr)
-	  freeDObj(dop);
-	else if(CLEAR)
-	  clearDObj(dop);
-	return(NULL);
+      	fclose(dop->fp);
+      	if(dop != doPtr){
+      	  freeDObj(dop);
+      	} else if(CLEAR) {
+      	  clearDObj(dop);
+      	}
+      	return(NULL);
       } /* else retain warning if set */
     }
     else if(mode & AFO_WRITE) {                    /* create/truncate */
       if(strcmp(filePath, "stdin") == 0) {
-	if(dop != doPtr)
-	  freeDObj(dop);
-	else if(CLEAR)
-	  clearDObj(dop);
-	setAsspMsg(AEF_ERR_OPEN, filePath);
-	return(NULL);
+      	if(dop != doPtr){
+      	  freeDObj(dop);
+      	} else if(CLEAR){
+      	  clearDObj(dop);
+      	}
+      	setAsspMsg(AEF_ERR_OPEN, filePath);
+      	return(NULL);
       }
       strcpy(Cmode, "w+");
-      if(!(mode & AFO_TEXT))
-	strcat(Cmode, "b");
-#ifndef WRASSP
-      if(strcmp(filePath, "stdout") == 0)
-	dop->fp = stdout;
-      else if(strcmp(filePath, "stderr") == 0)
-	dop->fp = stderr;
-      else
-#endif
-	dop->fp = fopen(filePath, Cmode);
+      if(!(mode & AFO_TEXT)){
+	      strcat(Cmode, "b");
+      }
+      #ifndef WRASSP
+        if(strcmp(filePath, "stdout") == 0){
+      	  dop->fp = stdout;
+        } else if(strcmp(filePath, "stderr") == 0){
+      	  dop->fp = stderr;
+        }
+      #else
+	      dop->fp = os_dependent_fopen(filePath, Cmode);
+      #endif
       if(dop->fp == NULL) {
-	if(dop != doPtr)
-	  freeDObj(dop);
-	else if(CLEAR)
-	  clearDObj(dop);
-	setAsspMsg(AEF_ERR_OPEN, filePath);
-	return(NULL);
+      	if(dop != doPtr){
+      	  freeDObj(dop);
+      	} else if(CLEAR){
+      	  clearDObj(dop);
+      	}
+      	setAsspMsg(AEF_ERR_OPEN, filePath);
+      	return(NULL);
       }
       if(dop == doPtr) {
-	err = putHeader(dop);
-	if(err < 0) {
-	  fclose(dop->fp);
-	  dop->fp = NULL;
-	  return(NULL);
-	} /* else retain warning if set */
+      	err = putHeader(dop);
+      	if(err < 0) {
+      	  fclose(dop->fp);
+      	  dop->fp = NULL;
+      	  return(NULL);
+      	} /* else retain warning if set */
       }
     }
+    
     dop->openMode = mode;                      /* successfully opened */
   }
+  #ifdef WRASSP
+  // test this under windows
+  // set char encoding of path to UTF8
+  // mkCharCE(dop->filePath, CE_UTF8);
+  #endif
+  
   return(dop);
 }
 
