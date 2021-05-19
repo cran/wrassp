@@ -1,7 +1,7 @@
-5fc97c913139f62d42e043c63d3d1e2d *DESCRIPTION
+b2b0e11e6ec30d61efb92079de7b8433 *DESCRIPTION
 d9c201bc9cc3511f8f337132236fd897 *NAMESPACE
-0a8c1d0da4e70b3870caefb9731b35eb *NEWS.md
-e9904536c092b6b3a8b246a4be1e3538 *R/AsspDataObj.R
+38a9c40350a521e282d97f13ab032a08 *NEWS.md
+55dcb51cd78e226c625b2a9647a79063 *R/AsspDataObj.R
 cc0669d7d297686d291e74ff02ef9eb4 *R/AsspTypes.R
 0cd4481b2a56ca579ed27b679399fb85 *R/acfana.R
 bdb26a0c6959bc00459266746243837d *R/afdiff.R
@@ -26,7 +26,7 @@ f4255da11291fe44c8a051adc98b8d12 *build/vignette.rds
 db0bec22dcf1d6e31d472d4b72e65ea4 *inst/CITATION
 ea6ab95600fa4ab4684edf7857c89e5a *inst/doc/wrassp_intro.R
 21ce73c307d4327036dd915161387e27 *inst/doc/wrassp_intro.Rmd
-86ac3940fd6928aef9fd82fcf0c3b33e *inst/doc/wrassp_intro.html
+a0b35923beb76896dbb927f65250233e *inst/doc/wrassp_intro.html
 6f2f87e6c58bfd892e4e744976569b23 *inst/extdata/lbo001.wav
 91b1a391af34e3e0e4d67cc244b4d75f *inst/extdata/lbo002.wav
 e35822751e79ce797df6d10ff52fc440 *inst/extdata/lbo003.wav
@@ -105,7 +105,7 @@ f30ee7da31bc655ddb8ed88fc271bd2b *src/assp/filter.h
 5c602fab22db734c1c275ba94861207c *src/assp/fmt.c
 2bb9fd92ffc5fab00dceaedca2c8ef7c *src/assp/fmt.h
 27b2a2c6eca0d3778d7bc967f8028b4f *src/assp/freqconv.c
-980e3a1700408588cc526c67793f0bb5 *src/assp/headers.c
+11b54adaa26f29a681bddc9f9726ce55 *src/assp/headers.c
 e8b59d9c6134c4007f35dd7fdb6cf599 *src/assp/headers.h
 e646d0d7188a8165f0f720213008ad83 *src/assp/ieee.h
 a3440cb70f5189b7aaa8995d5bed0aa2 *src/assp/ipds_lbl.h

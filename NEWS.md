@@ -1,3 +1,13 @@
+# wrassp 1.0.1
+
+## new features / performance tweaks / improvements
+
+## bug fixes
+
+* type casting begin/end parameter values to numeric if they are integer values in `read.AsspDataObj()` (fixes IPS-LMU/emuR#231)
+* checking max header size of SSFF files in putSSFFhdr and issuing warning instead of breaking the current R session. (closes #38)
+
+
 # wrassp 1.0.0
 
 ## new features / performance tweaks / improvements
