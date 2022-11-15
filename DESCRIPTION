@@ -1,11 +1,12 @@
 Package: wrassp
-Version: 1.0.1
+Version: 1.0.2
 Title: Interface to the 'ASSP' Library
 Authors@R: c(
-    person("Raphael", "Winkelmann", ,"raphael@phonetik.uni-muenchen.de", role = c("aut", "cre")),
+    person("Markus", "Jochim", ,"markusjochim@phonetik.uni-muenchen.de", role = c("cre")),
+    person("Raphael", "Winkelmann", ,"raphael@phonetik.uni-muenchen.de", role = c("aut")),
     person("Lasse", "Bombien", , "lasse@phonetik.uni-muenchen.de", role = c("aut")),
     person("Michel", "Scheffers", role = c("aut")))
-Description: A wrapper around Michel Scheffers's 'libassp' (<http://libassp.sourceforge.net/>). 
+Description: A wrapper around Michel Scheffers's 'libassp' (<https://libassp.sourceforge.net/>).
     The 'libassp' (Advanced Speech Signal Processor) library aims at providing
     functionality for handling speech signal files in most common audio formats
     and for performing analyses common in phonetic science/speech science. This
@@ -22,10 +23,11 @@ URL: https://github.com/IPS-LMU/wrassp
 BugReports: https://github.com/IPS-LMU/wrassp/issues
 RoxygenNote: 7.0.2
 NeedsCompilation: yes
-Packaged: 2021-05-19 18:12:32 UTC; raphaelwinkelmann
-Author: Raphael Winkelmann [aut, cre],
+Packaged: 2022-11-11 15:55:00 UTC; markus
+Author: Markus Jochim [cre],
+  Raphael Winkelmann [aut],
   Lasse Bombien [aut],
   Michel Scheffers [aut]
-Maintainer: Raphael Winkelmann <raphael@phonetik.uni-muenchen.de>
+Maintainer: Markus Jochim <markusjochim@phonetik.uni-muenchen.de>
 Repository: CRAN
-Date/Publication: 2021-05-19 18:30:02 UTC
+Date/Publication: 2022-11-15 18:40:02 UTC
