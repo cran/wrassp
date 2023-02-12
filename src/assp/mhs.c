@@ -207,7 +207,7 @@ int setMHSgenderDefaults(AOPTS *aoPtr, char gender)
     break;
   default:
     setAsspMsg(AEG_ERR_BUG, NULL);
-    sprintf(applMessage, "setMHSgenderDefaults: invalid gender code '%c'",\
+    snprintf(applMessage, sizeof(applMessage), "setMHSgenderDefaults: invalid gender code '%c'",\
 	    gender);
     return(-1);
   }
@@ -302,21 +302,21 @@ DOBJ *createMHS(DOBJ *smpDOp, AOPTS *aoPtr)
   if((aoPtr->maxF * MHS_MINPEAKS * 2.0) >= smpDOp->sampFreq) {
     asspMsgNum = AEG_ERR_APPL;
     if(smpDOp->filePath != NULL)
-      sprintf(applMessage, "Maximum pitch too high for sample rate in %s",\
+      snprintf(applMessage, sizeof(applMessage), "Maximum pitch too high for sample rate in %s",\
 	      smpDOp->filePath);
     else
-      sprintf(applMessage, "Maximum pitch too high for sample rate");
+      snprintf(applMessage, sizeof(applMessage), "Maximum pitch too high for sample rate");
     return(NULL);
   }
   if(aoPtr->minF < MHS_ABSMIN_F0) {
     asspMsgNum = AEG_ERR_APPL;
-    sprintf(applMessage, "Minimum pitch too low (minimally %d)",\
+    snprintf(applMessage, sizeof(applMessage), "Minimum pitch too low (minimally %d)",\
 	    (int)MHS_ABSMIN_F0);
     return(NULL);
   }
   if(aoPtr->maxF <= aoPtr->minF) {
     asspMsgNum = AEG_ERR_APPL;
-    sprintf(applMessage, "Maximum pitch <= minimum pitch");
+    snprintf(applMessage, sizeof(applMessage), "Maximum pitch <= minimum pitch");
     return(NULL);
   }
   if((gd=(MHS_GD *)malloc(sizeof(MHS_GD))) == NULL) {
@@ -398,14 +398,14 @@ DOBJ *createMHS(DOBJ *smpDOp, AOPTS *aoPtr)
     }
     strcpy(dop->sepChars, "\t");                    /* between fields */
     strcpy(dd->sepChars, " ");                        /* within field */
-    sprintf(dd->ascFormat, "%%.%df", gd->precision);
+    snprintf(dd->ascFormat, member_size(DDESC, ascFormat), "%%.%df", gd->precision);
   }
   else { /* fall through to raw ASCII */
     dd->ident = strdup("PITCH");
     strcpy(dd->unit, "Hz");
     strcpy(dop->sepChars, "\t");                    /* between fields */
     strcpy(dd->sepChars, " ");                        /* within field */
-    sprintf(dd->ascFormat, "%%.%df", gd->precision);
+    snprintf(dd->ascFormat, member_size(DDESC, ascFormat), "%%.%df", gd->precision);
   }
   setRecordSize(dop);
   setStart_Time(dop);
@@ -723,7 +723,7 @@ LOCAL int setGlobals(DOBJ *dop)
   }
   winShift = SMPNRtoTIME(frameShift, sampFreq);         /* in seconds */
   nd = numDecim(winShift, 12);
-  sprintf(secFormat, "TIME %%%d.%df  ", nd+2+1, nd);     /* for TRACE */
+  snprintf(secFormat, sizeof(secFormat), "TIME %%%d.%df  ", nd+2+1, nd);     /* for TRACE */
 /*
  * FFT and window parameters
  */

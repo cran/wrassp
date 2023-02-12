@@ -149,7 +149,7 @@ char *getAsspMsg(short num)
       return(asspMessage[i].str);
   }
 /* not found in list */
-  sprintf(applMessage,"\n%s: %04x", getAsspMsg(AEE_BAD_ERR), num);
+  snprintf(applMessage, sizeof(applMessage), "\n%s: %04x", getAsspMsg(AEE_BAD_ERR), num);
   return(getAsspMsg(AWG_WARN_BUG));
 }
 
@@ -183,12 +183,12 @@ int prtAsspMsg(FILE *fp)
       bug = getAsspMsg(AEG_ERR_BUG);
     if(asspWarning) {
       funcVal = 1;
-      sprintf(indent, "%9s", " ");
+      snprintf(indent, sizeof(indent), "%9s", " ");
       fprintf(fp, "WARNING: %s", msg);
     }
     else {
       funcVal = -1;
-      sprintf(indent, "%7s", " ");
+      snprintf(indent, sizeof(indent), "%7s", " ");
       if(bug != NULL) {
 	fprintf(fp, "ERROR: %s\n", bug);
 	fprintf(fp, "%s%s", indent, msg);         /* the real message */

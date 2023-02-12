@@ -109,13 +109,13 @@ int getLabelHead(DOBJ *dop)
   clrAsspMsg();
   if(!(dop->fileFormat == FF_IPDS_M || dop->fileFormat == FF_IPDS_S) ) {
     asspMsgNum = AEG_ERR_BUG;
-    sprintf(applMessage, "File %s is not in MIX or SAMPA format",\
+    snprintf(applMessage, sizeof(applMessage), "File %s is not in MIX or SAMPA format",\
 	    dop->filePath);
     return(-1);
   }
   if(dop->generic != NULL) {
     asspMsgNum = AEG_ERR_BUG;
-    sprintf(applMessage, "Data object for file %s\n"\
+    snprintf(applMessage, sizeof(applMessage), "Data object for file %s\n"\
 	    " already contains generic data", dop->filePath);
     return(-1);
   }
@@ -140,7 +140,7 @@ int getLabelHead(DOBJ *dop)
   } while(n >= 0);
   if(!OK || n < 0) {
     asspMsgNum = AEF_BAD_HEAD;
-    sprintf(applMessage, "(IPdS-%s format)\nin file %s",
+    snprintf(applMessage, sizeof(applMessage), "(IPdS-%s format)\nin file %s",
 	    (dop->fileFormat == FF_IPDS_M) ? "MIX": "SAM", dop->filePath);
     return(-1);
   }
@@ -157,7 +157,7 @@ int getLabelHead(DOBJ *dop)
   }
   if(dop->generic == NULL) {
     asspMsgNum = AEG_ERR_MEM;
-    sprintf(applMessage, "\n(can't copy header of file %s)",\
+    snprintf(applMessage, sizeof(applMessage), "\n(can't copy header of file %s)",\
 	    dop->filePath);
     return(-1);
   }
@@ -427,7 +427,7 @@ long saveLabels(DOBJ *dop)
 	else
 	  lPtr->time = SMPNRtoTIME(lPtr->smpNr, dop->sampFreq);
       }
-      sprintf(lineBuf, MIX_LBL_STR_AP, lPtr->smpNr+1, lPtr->name,\
+      snprintf(lineBuf, sizeof(lineBuf), MIX_LBL_STR_AP, lPtr->smpNr+1, lPtr->name,\
 	      (long)floor((lPtr->time)*100.0)+1, nd, lPtr->time);
     }
     else if(dop->fileFormat == FF_IPDS_S) {
@@ -445,7 +445,7 @@ long saveLabels(DOBJ *dop)
 	else
 	  lPtr->time = SMPNRtoTIME(lPtr->smpNr, dop->sampFreq);
       }
-      sprintf(lineBuf, SAM_LBL_STR_AP, lPtr->smpNr+1, lPtr->name,\
+      snprintf(lineBuf, sizeof(lineBuf), SAM_LBL_STR_AP, lPtr->smpNr+1, lPtr->name,\
 	      nd, lPtr->time);
     }
     else { /* FF_XLABEL */
@@ -460,7 +460,7 @@ long saveLabels(DOBJ *dop)
 	}
 	lPtr->time = SMPNRtoTIME(lPtr->smpNr, dop->sampFreq);
       }
-      sprintf(lineBuf, XLBL_STR_AP, nd, lPtr->time, color, lPtr->name);
+      snprintf(lineBuf, sizeof(lineBuf), XLBL_STR_AP, nd, lPtr->time, color, lPtr->name);
     }
     strcat(lineBuf, dop->eol);
     if(fwrite((void *)lineBuf, sizeof(char), strlen(lineBuf), dop->fp) < 1) {

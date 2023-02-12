@@ -149,7 +149,7 @@ typedef struct assp_message_record {
 #define MAX_MSG_LEN (4095)
 ASSP_EXTERN AMREC asspMessage[];
 ASSP_EXTERN short asspMsgNum;
-ASSP_EXTERN char  applMessage[/* MAX_MSG_LEN + 1 */];
+ASSP_EXTERN char  applMessage[MAX_MSG_LEN + 1];
 
 /*
  * prototypes of functions in asspmess.c
@@ -166,6 +166,9 @@ ASSP_EXTERN int   setAsspMsg(short num, char *txt);
 #define asspError ((asspMsgNum & (short)0xff00) == ASSP_ERROR)
 #define asspBug ((asspMsgNum & (short)0xfff0) == ASSP_BUG)
 #define asspFeof (asspMsgNum == ASSP_ERR_EOF)
+
+// helper macro to make usage of snprintf easier; macro copied from https://stackoverflow.com/a/3553321
+#define member_size(type, member) sizeof(((type *)0)->member)
 
 #ifdef __cplusplus
 } /* closing brace for extern "C" */

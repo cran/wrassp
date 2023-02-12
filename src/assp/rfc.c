@@ -266,7 +266,7 @@ DOBJ *createLP(DOBJ *smpDOp, AOPTS *aoPtr)
     dd->ident = strdup("RMS");
     strcpy(dd->unit, "dB");
     strcpy(dd->sepChars, " ");                        /* within field */
-    sprintf(dd->ascFormat, "%%.%df", gd->precision);
+    snprintf(dd->ascFormat, member_size(DDESC, ascFormat), "%%.%df", gd->precision);
   }
 
   dd = dd->next;                /* set pointer to 2nd data descriptor */
@@ -289,7 +289,7 @@ DOBJ *createLP(DOBJ *smpDOp, AOPTS *aoPtr)
     dd->ident = strdup("GAIN");
     strcpy(dd->unit, "dB");
     strcpy(dd->sepChars, " ");                        /* within field */
-    sprintf(dd->ascFormat, "%%.%df", gd->precision);
+    snprintf(dd->ascFormat, member_size(DDESC, ascFormat), "%%.%df", gd->precision);
   }
 
   dd = dd->next;                /* set pointer to 3rd data descriptor */
@@ -314,7 +314,7 @@ DOBJ *createLP(DOBJ *smpDOp, AOPTS *aoPtr)
   else {
     dd->ident = strdup(LPident);
     strcpy(dd->sepChars, " ");                        /* within field */
-    sprintf(dd->ascFormat, "%%+.%de", gd->accuracy);
+    snprintf(dd->ascFormat, member_size(DDESC, ascFormat), "%%+.%de", gd->accuracy);
   }
   setRecordSize(dop);
   setStart_Time(dop);
@@ -472,11 +472,11 @@ DOBJ *computeLP(DOBJ *smpDOp, AOPTS *aoPtr, DOBJ *lpDOp)
     if(asspDurbin(acf, lpc, rfc, &(data.gain), order) < 0) {
       bPtr = &applMessage[strlen(applMessage)];
       if(FILE_IN)
-	sprintf(bPtr, "\nat T = %.4f in %s",\
+	snprintf(bPtr, sizeof(applMessage) - strlen(applMessage), "\nat T = %.4f in %s",\
 		FRMNRtoTIME(fn, smpDOp->sampFreq, frameShift),\
 		myfilename(smpDOp->filePath));
       else
-	sprintf(bPtr, "\nat T = %.4f",\
+	snprintf(bPtr, sizeof(applMessage) - strlen(applMessage), "\nat T = %.4f",\
 		FRMNRtoTIME(fn, smpDOp->sampFreq, frameShift));
       if(TRACE['F'] || TRACE['f'])
 	prtAsspMsg(traceFP);

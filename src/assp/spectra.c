@@ -511,10 +511,10 @@ DOBJ *createSPECT(DOBJ *smpDOp, AOPTS *aoPtr)
       if(dd->format == DF_REAL64)
 	strcpy(dd->ascFormat, "%+.14e");
       else
-	sprintf(dd->ascFormat, "%%+.%de", gd->accuracy);
+	snprintf(dd->ascFormat, member_size(DDESC, ascFormat), "%%+.%de", gd->accuracy);
     }
     else
-      sprintf(dd->ascFormat, "%%.%df", gd->precision);
+      snprintf(dd->ascFormat, member_size(DDESC, ascFormat), "%%.%df", gd->precision);
   }
   setRecordSize(dop);
   setStart_Time(dop);
@@ -687,11 +687,11 @@ DOBJ *computeSPECT(DOBJ *smpDOp, AOPTS *aoPtr, DOBJ *spectDOp)
       if(err < 0) {
 	bPtr = &applMessage[strlen(applMessage)];
 	if(FILE_IN)
-	  sprintf(bPtr, " at T = %.4f in %s",\
+	  snprintf(bPtr, sizeof(applMessage) - strlen(applMessage), " at T = %.4f in %s",\
 		  FRMNRtoTIME(fn, spectDOp->sampFreq, frameShift),\
 		  myfilename(smpDOp->filePath));
 	else
-	  sprintf(bPtr, " at T = %.4f",\
+	  snprintf(bPtr, sizeof(applMessage) - strlen(applMessage), " at T = %.4f",\
 		  FRMNRtoTIME(fn, spectDOp->sampFreq, frameShift));
 	if(TRACE['d'])
 	  prtAsspMsg(traceFP);

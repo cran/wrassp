@@ -189,7 +189,7 @@ int setFMTgenderDefaults(AOPTS *aoPtr, char gender)
     break;
   default:
     setAsspMsg(AEG_ERR_BUG, NULL);
-    sprintf(applMessage, "setFMTgenderDefaults: invalid gender code '%c'",\
+    snprintf(applMessage, sizeof(applMessage), "setFMTgenderDefaults: invalid gender code '%c'",\
 	    gender);
     return(-1);
   }
@@ -371,7 +371,7 @@ DOBJ *createFMT(DOBJ *smpDOp, AOPTS *aoPtr)
     else {
       dd->ident = strdup("LP1");
       strcpy(dd->sepChars, " ");                      /* within field */
-      sprintf(dd->ascFormat, "%%+.%de", gd->accuracy);
+      snprintf(dd->ascFormat, member_size(DDESC, ascFormat), "%%+.%de", gd->accuracy);
     }
     dd = dd->next;              /* set pointer to 2nd data descriptor */
   }
@@ -616,11 +616,11 @@ DOBJ *computeFMT(DOBJ *smpDOp, AOPTS *aoPtr, DOBJ *fmtDOp)
 	  bPtr = &applMessage[strlen(applMessage)];
 	  if(asspWarning) {                        /* instable filter */
 	    if(FILE_IN)
-	      sprintf(bPtr, "\nat T = %.4f in %s",\
+	      snprintf(bPtr, sizeof(applMessage) - strlen(applMessage), "\nat T = %.4f in %s",\
 		      FRMNRtoTIME(fn, sampFreq, frameShift),\
 		      myfilename(smpDOp->filePath));
 	    else
-	      sprintf(bPtr, "\nat T = %.4f",\
+	      snprintf(bPtr, sizeof(applMessage) - strlen(applMessage), "\nat T = %.4f",\
 		      FRMNRtoTIME(fn, sampFreq, frameShift));
 #ifndef WRASSP
 	    if(TRACE['F'] || TRACE['f'])
@@ -630,11 +630,11 @@ DOBJ *computeFMT(DOBJ *smpDOp, AOPTS *aoPtr, DOBJ *fmtDOp)
 	  }
 	  else {                         /* FATAL error in PF search */
 	    if(FILE_IN)
-	      sprintf(bPtr, "\nat T = %.4f in %s",\
+	      snprintf(bPtr, sizeof(applMessage) - strlen(applMessage), "\nat T = %.4f in %s",\
 		      FRMNRtoTIME(fn, sampFreq, frameShift),\
 		      myfilename(smpDOp->filePath));
 	    else
-	      sprintf(bPtr, "\nat T = %.4f",\
+	      snprintf(bPtr, sizeof(applMessage) - strlen(applMessage), "\nat T = %.4f",\
 		      FRMNRtoTIME(fn, sampFreq, frameShift));
 	    err = -1;
 	    /* break; */
@@ -666,11 +666,11 @@ DOBJ *computeFMT(DOBJ *smpDOp, AOPTS *aoPtr, DOBJ *fmtDOp)
 	if(asspDurbin(atc, lpc, NULL, &(sortBuf.gain), gd->lpOrder) < 0) {
 	  bPtr = &applMessage[strlen(applMessage)];
 	  if(FILE_IN)
-	    sprintf(bPtr, "\nat T = %.4f in %s",\
+	    snprintf(bPtr, sizeof(applMessage) - strlen(applMessage), "\nat T = %.4f in %s",\
 		    FRMNRtoTIME(fn, sampFreq, frameShift),\
 		    myfilename(smpDOp->filePath));
 	  else
-	    sprintf(bPtr, "\nat T = %.4f",\
+	    snprintf(bPtr, sizeof(applMessage) - strlen(applMessage), "\nat T = %.4f",\
 		    FRMNRtoTIME(fn, sampFreq, frameShift));
 #ifndef WRASSP
 	  if(TRACE['F'] || TRACE['f'])
@@ -986,7 +986,7 @@ LOCAL int setGlobals(DOBJ *dop)
   nd = numDecim(shift, 12);
   if(nd <= 0)
     nd = 1;
-  sprintf(trgepFormat, "%%%d.%df %%5.1f %%5.1f %%+.2e %%.1e", nd+3+1, nd);
+  snprintf(trgepFormat, sizeof(trgepFormat), "%%%d.%df %%5.1f %%5.1f %%+.2e %%.1e", nd+3+1, nd);
   strcpy(fpbFormat, "  %c%d %4.0f/%-4.0f %4.0f");
   return(0);
 }
