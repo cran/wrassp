@@ -1,6 +1,6 @@
-382cf4e518081b0e162fed4acf8df443 *DESCRIPTION
+cea0b0a0241f6b4d4725e3b12ecfa8e4 *DESCRIPTION
 d9c201bc9cc3511f8f337132236fd897 *NAMESPACE
-2b111d06a5d570f74e8698c7f66fe845 *NEWS.md
+fcf860b9da8867430e777568e1db2498 *NEWS.md
 4b0651591e74947a693d560e4bf76ff4 *R/AsspDataObj.R
 cc0669d7d297686d291e74ff02ef9eb4 *R/AsspTypes.R
 0cd4481b2a56ca579ed27b679399fb85 *R/acfana.R
@@ -21,12 +21,12 @@ e0a94986d4f481804b3b6b14d5c5bb0d *R/rmsana.R
 a6acfca7204b04807bb47aa3164c4e0f *R/wrassp-packageDocs.R
 e6de4fb2099ae124009c855926b81885 *R/wrassp.logger.R
 86a32575fd8675e91eaeb8018dbc7576 *R/zcrana.R
-99497a62a62a98644244b169c08e8862 *README.md
-1659787f6632f2ed32aa32baeb24b567 *build/vignette.rds
+1cec05ffe9d3720755e928c77b7b88a0 *README.md
+d809180e7a6006cae24ea7ea06bcdb75 *build/vignette.rds
 2a735789067c7c91e9209d9c96dec80c *inst/CITATION
 ea6ab95600fa4ab4684edf7857c89e5a *inst/doc/wrassp_intro.R
 2529a629a6651a2c9340e1cb59c8427e *inst/doc/wrassp_intro.Rmd
-a0ec9bcb766955721836888fde365b73 *inst/doc/wrassp_intro.html
+e525846dc3e20dc1e808b61bf4a86ebd *inst/doc/wrassp_intro.html
 6f2f87e6c58bfd892e4e744976569b23 *inst/extdata/lbo001.wav
 91b1a391af34e3e0e4d67cc244b4d75f *inst/extdata/lbo002.wav
 e35822751e79ce797df6d10ff52fc440 *inst/extdata/lbo003.wav
@@ -117,7 +117,7 @@ c06e8516ad69f26f3da875e7bf88f6e3 *src/assp/labelobj.h
 4cbd1a26359f187c8c302ca9c9c2d0f0 *src/assp/lpc.c
 f6e28947d182ae3e4b8f1f4f36115782 *src/assp/math.c
 163921c4562afc8917a0d3597efe80b6 *src/assp/memswab.c
-2b95e0cfc9775865a15bec4f80b669e7 *src/assp/mhs.c
+ebb510771149a57fc9d2d18d48586e9a *src/assp/mhs.c
 481c7e760a604bdee780e9be9ed69837 *src/assp/mhs.h
 6d9c5b063c2580b099243bd432dac482 *src/assp/misc.h
 159d5a75f72fe65b83ce35c45328c566 *src/assp/miscdefs.h

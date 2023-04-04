@@ -1,6 +1,6 @@
 Package: wrassp
-Version: 1.0.3
-Date: 2023-02-11
+Version: 1.0.4
+Date: 2023-04-04
 Title: Interface to the 'ASSP' Library
 Authors@R: c(
     person("Raphael", "Winkelmann", ,"raphael@phonetik.uni-muenchen.de", role = c("aut")),
@@ -24,11 +24,11 @@ URL: https://github.com/IPS-LMU/wrassp
 BugReports: https://github.com/IPS-LMU/wrassp/issues
 RoxygenNote: 7.0.2
 NeedsCompilation: yes
-Packaged: 2023-02-11 17:55:58 UTC; markus
+Packaged: 2023-04-04 14:57:15 UTC; markus
 Author: Raphael Winkelmann [aut],
   Lasse Bombien [aut],
   Michel Scheffers [aut],
   Markus Jochim [cre, aut] (<https://orcid.org/0000-0002-5638-4870>)
 Maintainer: Markus Jochim <markusjochim@phonetik.uni-muenchen.de>
 Repository: CRAN
-Date/Publication: 2023-02-12 14:50:02 UTC
+Date/Publication: 2023-04-04 16:00:02 UTC
