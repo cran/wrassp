@@ -1,6 +1,6 @@
-cea0b0a0241f6b4d4725e3b12ecfa8e4 *DESCRIPTION
+cfaf8f680acc0dbe37d88840198738ee *DESCRIPTION
 d9c201bc9cc3511f8f337132236fd897 *NAMESPACE
-fcf860b9da8867430e777568e1db2498 *NEWS.md
+9cdaac12f5ad0a1fea7e034676c88db4 *NEWS.md
 4b0651591e74947a693d560e4bf76ff4 *R/AsspDataObj.R
 cc0669d7d297686d291e74ff02ef9eb4 *R/AsspTypes.R
 0cd4481b2a56ca579ed27b679399fb85 *R/acfana.R
@@ -22,11 +22,11 @@ a6acfca7204b04807bb47aa3164c4e0f *R/wrassp-packageDocs.R
 e6de4fb2099ae124009c855926b81885 *R/wrassp.logger.R
 86a32575fd8675e91eaeb8018dbc7576 *R/zcrana.R
 1cec05ffe9d3720755e928c77b7b88a0 *README.md
-d809180e7a6006cae24ea7ea06bcdb75 *build/vignette.rds
+41ff6e6e483397551b4cf45802ec2b96 *build/vignette.rds
 2a735789067c7c91e9209d9c96dec80c *inst/CITATION
 ea6ab95600fa4ab4684edf7857c89e5a *inst/doc/wrassp_intro.R
 2529a629a6651a2c9340e1cb59c8427e *inst/doc/wrassp_intro.Rmd
-e525846dc3e20dc1e808b61bf4a86ebd *inst/doc/wrassp_intro.html
+44b9aca8e76e39e34e12c343bd8a9646 *inst/doc/wrassp_intro.html
 6f2f87e6c58bfd892e4e744976569b23 *inst/extdata/lbo001.wav
 91b1a391af34e3e0e4d67cc244b4d75f *inst/extdata/lbo002.wav
 e35822751e79ce797df6d10ff52fc440 *inst/extdata/lbo003.wav
@@ -38,7 +38,7 @@ f024ab4d71ffa1b6a89577cfac8659b1 *inst/extdata/lbo007.wav
 931592e2372cca9851f2ace1b23dda41 *inst/extdata/lbo009.wav
 41460dd97a4b26408d6a0d61a6400b75 *man/AsspDataFormat.Rd
 221336d616948aa73b9c67e132be537d *man/AsspFileFormat.Rd
-7f082ea307511d061791f235840a40ad *man/AsspFileFormats.Rd
+7e6cdd06fd11cf97837de0619e1c7f7e *man/AsspFileFormats.Rd
 898a20816949107dc274beacff86f44e *man/AsspLpTypes.Rd
 2d9a000414cea45cccb13186a52fdff0 *man/AsspSpectTypes.Rd
 fb084a6d8674bc00e004a006399f130c *man/AsspWindowTypes.Rd
@@ -65,10 +65,10 @@ ccba91c730e29428b8d90d530615574c *man/isAsspLpType.Rd
 37beb378da64aa9e05df89b8cd58eb06 *man/rfcana.Rd
 909238ecb7bdb521312be5e77b0ff56c *man/rmsana.Rd
 1eae30c6b1331bd6f2d60d798c517ab8 *man/tracks.AsspDataObj.Rd
-88df1b0dc75500e4b3b3b7f94b1acfe0 *man/useWrasspLogger.Rd
+29a3deb2a41e9de60ae268f837a414e7 *man/useWrasspLogger.Rd
 0f82fd3a71018d4f04f2aebd58d217c9 *man/wrassp-package.Rd
 f78941c4294197d65d6ea781ead1c605 *man/wrassp.logger.Rd
-d1b6d6639df14be6286b7bd76455d96e *man/wrasspOutputInfos.Rd
+d7d5a91736b07f8e653764298ce46af0 *man/wrasspOutputInfos.Rd
 37763e93e643054b17b53a2b38cc4065 *man/write.AsspDataObj.Rd
 49ca7305fa841523698c4a932d92de54 *man/zcrana.Rd
 c6c7f7cf1591728f858ba0caab65c692 *src/Makevars
@@ -141,7 +141,7 @@ c8911edd16e97d0532c262557b7ef646 *src/assp/trace.c
 a03e7ac13cc1e9c5a920cb3b4544d5a5 *src/assp/winfuncs.c
 617b52d82f383f9abbae5e2582cff306 *src/assp/zcr.c
 5a61d4519d7299254e49b1aaaf44b22d *src/assp/zcr.h
-950da061aaf52969d039997c19a1e839 *src/dataobj.c
+1cd6d390f9343563a1c9aef26d53ab8d *src/dataobj.c
 de63ffb474e44cf0d0365c7b9c7eb01b *src/performAssp.c
 12490373136ae9dcdba7f91caac33c3e *src/types.c
 8a2102db5f63ac0624d6aa52c98b42b1 *src/wrassp.h
