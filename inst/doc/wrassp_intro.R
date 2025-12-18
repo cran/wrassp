@@ -103,6 +103,6 @@ names(wrasspOutputInfos)
 wrasspOutputInfos$forest
 
 ## ----eval=FALSE---------------------------------------------------------------
-#  # open wrassp package documentation
-#  ?wrassp
+# # open wrassp package documentation
+# ?wrassp
 
